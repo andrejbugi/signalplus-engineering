@@ -852,6 +852,15 @@ textarea:focus {
     padding: 9px 12px;
   }
 
+  .about-image-card,
+  .about-design {
+    min-height: 510px;
+  }
+
+  .about-design {
+    object-position: 8% center;
+  }
+
   .hero-stats,
   .dashboard-row,
   .form-row.two-cols {
