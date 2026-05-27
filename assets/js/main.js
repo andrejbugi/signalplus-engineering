@@ -1,3 +1,43 @@
+const themeToggles = document.querySelectorAll('.theme-toggle');
+const root = document.documentElement;
+const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+const getStoredTheme = () => {
+  try {
+    return localStorage.getItem('signalplus-theme');
+  } catch (error) {
+    return null;
+  }
+};
+
+const storeTheme = (theme) => {
+  try {
+    localStorage.setItem('signalplus-theme', theme);
+  } catch (error) {
+    // Theme still switches for the current page even when storage is unavailable.
+  }
+};
+
+const applyTheme = (theme) => {
+  root.dataset.theme = theme;
+
+  themeToggles.forEach((toggle) => {
+    const isDark = theme === 'dark';
+    toggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+    toggle.setAttribute('aria-pressed', String(isDark));
+  });
+};
+
+applyTheme(getStoredTheme() || (systemPrefersDark ? 'dark' : 'light'));
+
+themeToggles.forEach((toggle) => {
+  toggle.addEventListener('click', () => {
+    const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    storeTheme(nextTheme);
+    applyTheme(nextTheme);
+  });
+});
+
 const navToggle = document.querySelector('.nav-toggle');
 const navMenu = document.querySelector('.nav-menu');
 

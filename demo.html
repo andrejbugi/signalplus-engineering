@@ -8,17 +8,27 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    try {
+      document.documentElement.dataset.theme = localStorage.getItem('signalplus-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    } catch (error) {
+      document.documentElement.dataset.theme = 'light';
+    }
+  </script>
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body class="demo-page">
   <header class="site-header">
     <nav class="navbar container">
       <a class="brand" href="index.html" aria-label="Signal Plus Engineering home">
-        <span class="brand-mark">SP</span>
-        <span class="brand-text">Signal Plus Engineering</span>
+        <img class="brand-logo logo-on-light" src="assets/img/dark logo full.png" alt="Signal Plus Solutions" />
+        <img class="brand-logo logo-on-dark" src="assets/img/light logo full.png" alt="" aria-hidden="true" />
       </a>
       <div class="nav-menu static">
         <a href="index.html#platform">Платформа</a>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
+          <span class="theme-toggle-icon" aria-hidden="true"></span>
+        </button>
         <a href="index.html#contact" class="nav-cta">Закажи демо</a>
       </div>
     </nav>
