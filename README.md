@@ -15,12 +15,21 @@ signal-plus-website/
       style.css
     js/
       main.js
+    i18n/
+      mk.json
+      en.json
+    img/
+      dark logo full.png
+      dark logo.png
+      light logo full.png
+      light logo.png
+      signalplus-designs.jpg
 ```
 
 ## Pages
 
 ### `index.html`
-Main one-page landing website in Macedonian.
+Main one-page landing website with Macedonian fallback content and dynamic Macedonian/English translations.
 
 Includes:
 - Hero section
@@ -28,7 +37,7 @@ Includes:
 - Main benefits and modules
 - About us section
 - Contact form
-- CTA buttons: **„Закажи демо“** and **„Пробај демо“**
+- CTA buttons: **„Закажи демо“ / “Schedule demo”** and **„Пробај демо“ / “Try demo”**
 
 ### `demo.html`
 Draft demo page.
@@ -75,23 +84,40 @@ Suggested usage:
 
 ## Language Support
 
-The current website content is in **Macedonian**.
+The website supports:
+- Macedonian (`assets/i18n/mk.json`)
+- English (`assets/i18n/en.json`)
 
-The structure should remain extendable for future translations:
-- English
-- Albanian
-- Serbian
+The HTML keeps Macedonian text as a readable fallback. JavaScript loads the selected translation file, applies content to elements marked with `data-i18n`, and stores the selected language in `localStorage` under:
 
-Recommended future approach:
-- Keep all text content separated in translation objects/files
-- Add a language switcher in the header
-- Load translated labels dynamically with JavaScript or later through the backend
+```text
+signalplus-language
+```
+
+To add or edit text:
+1. Update the same key in both `assets/i18n/mk.json` and `assets/i18n/en.json`.
+2. Add `data-i18n="path.to.key"` to visible text in HTML.
+3. Use `data-i18n-placeholder`, `data-i18n-aria-label`, or `data-i18n-alt` for attributes.
+
+Because translations are loaded from JSON with `fetch`, test the site through a local server instead of opening the HTML file directly:
+
+```bash
+python3 -m http.server 8000
+```
+
+Then open:
+
+```text
+http://localhost:8000
+```
 
 ## JavaScript
 
-The contact form JavaScript is prepared only for frontend behavior.
+The JavaScript handles the theme switcher, language switcher, mobile navigation, and frontend-only contact form behavior.
 
 Currently:
+- It loads Macedonian/English JSON translations
+- It persists the selected language and theme
 - It validates the form
 - It prevents real submission
 - It can later be connected to an API, email service, CRM, or backend endpoint
@@ -100,7 +126,7 @@ Currently:
 
 Possible next steps:
 - Add real contact form submission
-- Add multilingual support
+- Add more languages such as Albanian or Serbian
 - Add animated product screenshots or dashboard mockups
 - Expand the demo page
 - Add pricing/packages section

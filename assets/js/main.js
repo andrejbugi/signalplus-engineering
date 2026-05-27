@@ -1,6 +1,11 @@
 const themeToggles = document.querySelectorAll('.theme-toggle');
+const languageToggles = document.querySelectorAll('[data-lang-toggle]');
 const root = document.documentElement;
 const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const pageKey = document.body.classList.contains('demo-page') ? 'demo' : 'index';
+const supportedLanguages = ['mk', 'en'];
+const defaultLanguage = 'mk';
+let currentTranslations = {};
 
 const getStoredTheme = () => {
   try {
@@ -18,12 +23,38 @@ const storeTheme = (theme) => {
   }
 };
 
+const getStoredLanguage = () => {
+  try {
+    return localStorage.getItem('signalplus-language');
+  } catch (error) {
+    return null;
+  }
+};
+
+const storeLanguage = (language) => {
+  try {
+    localStorage.setItem('signalplus-language', language);
+  } catch (error) {
+    // Language still switches for the current page even when storage is unavailable.
+  }
+};
+
+const getTranslation = (key, fallback = '') => {
+  const value = key.split('.').reduce((result, part) => result?.[part], currentTranslations);
+  return typeof value === 'string' ? value : fallback;
+};
+
 const applyTheme = (theme) => {
   root.dataset.theme = theme;
 
   themeToggles.forEach((toggle) => {
     const isDark = theme === 'dark';
-    toggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+    toggle.setAttribute(
+      'aria-label',
+      isDark
+        ? getTranslation('common.switchToLight', 'Switch to light theme')
+        : getTranslation('common.switchToDark', 'Switch to dark theme')
+    );
     toggle.setAttribute('aria-pressed', String(isDark));
   });
 };
@@ -35,6 +66,91 @@ themeToggles.forEach((toggle) => {
     const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark';
     storeTheme(nextTheme);
     applyTheme(nextTheme);
+  });
+});
+
+const applyTranslations = (translations) => {
+  currentTranslations = translations;
+  root.lang = translations.language?.code || defaultLanguage;
+
+  const documentTranslations = translations.documents?.[pageKey];
+
+  if (documentTranslations?.title) {
+    document.title = documentTranslations.title;
+  }
+
+  if (documentTranslations?.description) {
+    const description = document.querySelector('meta[name="description"]');
+    description?.setAttribute('content', documentTranslations.description);
+  }
+
+  document.querySelectorAll('[data-i18n]').forEach((element) => {
+    const translatedText = getTranslation(element.dataset.i18n);
+
+    if (translatedText) {
+      element.textContent = translatedText;
+    }
+  });
+
+  document.querySelectorAll('[data-i18n-placeholder]').forEach((element) => {
+    const translatedText = getTranslation(element.dataset.i18nPlaceholder);
+
+    if (translatedText) {
+      element.setAttribute('placeholder', translatedText);
+    }
+  });
+
+  document.querySelectorAll('[data-i18n-aria-label]').forEach((element) => {
+    const translatedText = getTranslation(element.dataset.i18nAriaLabel);
+
+    if (translatedText) {
+      element.setAttribute('aria-label', translatedText);
+    }
+  });
+
+  document.querySelectorAll('[data-i18n-alt]').forEach((element) => {
+    const translatedText = getTranslation(element.dataset.i18nAlt);
+
+    if (translatedText) {
+      element.setAttribute('alt', translatedText);
+    }
+  });
+
+  languageToggles.forEach((toggle) => {
+    toggle.textContent = translations.language?.toggleText || 'EN';
+    toggle.setAttribute('aria-label', translations.language?.toggleLabel || 'Switch language');
+  });
+
+  applyTheme(root.dataset.theme);
+};
+
+const loadLanguage = async (language) => {
+  const selectedLanguage = supportedLanguages.includes(language) ? language : defaultLanguage;
+  const response = await fetch(`assets/i18n/${selectedLanguage}.json`);
+
+  if (!response.ok) {
+    throw new Error(`Unable to load ${selectedLanguage} translations`);
+  }
+
+  const translations = await response.json();
+  storeLanguage(selectedLanguage);
+  applyTranslations(translations);
+};
+
+const initialLanguage = supportedLanguages.includes(getStoredLanguage()) ? getStoredLanguage() : defaultLanguage;
+
+loadLanguage(initialLanguage).catch((error) => {
+  console.warn(error);
+});
+
+languageToggles.forEach((toggle) => {
+  toggle.addEventListener('click', () => {
+    const currentLanguage = root.lang || defaultLanguage;
+    const nextLanguage = currentLanguage === 'en' ? 'mk' : 'en';
+
+    loadLanguage(nextLanguage).catch((error) => {
+      console.warn(error);
+    });
   });
 });
 
@@ -71,7 +187,7 @@ if (contactForm && formStatus) {
     formStatus.className = 'form-status';
 
     if (missingField) {
-      formStatus.textContent = 'Ве молиме пополнете ги задолжителните полиња.';
+      formStatus.textContent = getTranslation('home.form.missing', 'Ве молиме пополнете ги задолжителните полиња.');
       formStatus.classList.add('error');
       return;
     }
@@ -86,7 +202,7 @@ if (contactForm && formStatus) {
 
     console.log('Contact form payload:', payload);
 
-    formStatus.textContent = 'Барањето е подготвено. Формата моментално не испраќа податоци.';
+    formStatus.textContent = getTranslation('home.form.success', 'Барањето е подготвено. Формата моментално не испраќа податоци.');
     formStatus.classList.add('success');
     contactForm.reset();
   });

@@ -1,0 +1,147 @@
+{
+  "language": {
+    "code": "en",
+    "toggleLabel": "Switch to Macedonian",
+    "toggleText": "MK"
+  },
+  "documents": {
+    "index": {
+      "title": "Signal Plus Engineering | Elevator Maintenance Software",
+      "description": "B2B SaaS platform for elevator maintenance companies. Track monthly maintenance, service history, tasks, reminders, and 500+ elevators from one place."
+    },
+    "demo": {
+      "title": "Demo | Signal Plus Engineering",
+      "description": "Demo page for the Signal Plus Engineering SaaS platform for elevator maintenance."
+    }
+  },
+  "common": {
+    "brandAria": "Signal Plus Engineering home",
+    "openNavigation": "Open navigation",
+    "scheduleDemo": "Schedule demo",
+    "tryDemo": "Try demo",
+    "switchToDark": "Switch to dark theme",
+    "switchToLight": "Switch to light theme"
+  },
+  "nav": {
+    "platform": "Platform",
+    "features": "Features",
+    "about": "About",
+    "contact": "Contact",
+    "demo": "Demo"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "B2B SaaS for elevator maintenance companies",
+      "title": "Never miss monthly maintenance again.",
+      "lead": "Signal Plus Engineering helps service companies manage 500+ elevators, tasks, reminders, service history, and field activity from one place.",
+      "statsAria": "Platform highlights",
+      "stats": {
+        "elevators": "elevators under control",
+        "statuses": "status visibility",
+        "reminders": "and email reminders"
+      }
+    },
+    "dashboard": {
+      "aria": "Dashboard preview",
+      "monthly": "Monthly maintenance",
+      "inProgress": "In progress",
+      "today": "Today",
+      "serviceTasks": "service tasks",
+      "expiring": "Expiring",
+      "thisWeek": "elevators this week",
+      "done": "Done",
+      "tomorrow": "Tomorrow",
+      "late": "Late",
+      "locations": {
+        "center": "Center, Skopje",
+        "karposh": "Karposh, Skopje",
+        "aerodrom": "Aerodrom, Skopje"
+      }
+    },
+    "platform": {
+      "eyebrow": "Platform",
+      "title": "One place for every elevator, task, and service visit.",
+      "text": "Instead of Excel sheets, paper notes, and manual calls, the system gives you a clear view of every elevator, last maintenance date, next visit, assigned engineer, and activity status.",
+      "cards": {
+        "planning": {
+          "title": "Maintenance planning",
+          "text": "Automatically track monthly checks, deadlines, and service visits that need to be completed on time."
+        },
+        "history": {
+          "title": "History per elevator",
+          "text": "Every elevator has its own service history, notes, documents, and engineer activity."
+        },
+        "notifications": {
+          "title": "Reminders and notifications",
+          "text": "Email and SMS notifications based on the customer package, with support for different notification volumes."
+        }
+      }
+    },
+    "features": {
+      "eyebrow": "Features",
+      "title": "Built for real field operations.",
+      "text": "The system is designed for companies that manage many locations, engineers, and recurring obligations.",
+      "lines": {
+        "elevators": {
+          "title": "Manage 500+ elevators",
+          "text": "Filter by city, building, status, engineer, and next service visit."
+        },
+        "map": {
+          "title": "Map and locations",
+          "text": "View elevators by location to plan routes and daily work more effectively."
+        },
+        "tasks": {
+          "title": "Engineer tasks",
+          "text": "Know exactly who needs to do what, when it was completed, and what was noted in the field."
+        },
+        "reports": {
+          "title": "Reports and overviews",
+          "text": "Monthly reports, engineer activity, and maintenance status for management."
+        }
+      }
+    },
+    "cta": {
+      "eyebrow": "For service companies",
+      "title": "Better control, fewer missed deadlines.",
+      "text": "Move from manual tracking to a professional elevator maintenance system."
+    },
+    "about": {
+      "imageAlt": "Preview of the Signal Plus elevator maintenance platform",
+      "eyebrow": "About us",
+      "title": "A professional approach to maintenance and organization.",
+      "text1": "Signal Plus Engineering develops digital solutions for companies that want better organization, clear records, and timely service execution.",
+      "text2": "Our goal is to help elevator maintenance companies work more efficiently, with less administrative load and more control over every building."
+    },
+    "contact": {
+      "eyebrow": "Contact",
+      "title": "Schedule a demo presentation.",
+      "text": "Fill out the form and our team will contact you for a short presentation of the system.",
+      "noteTitle": "What do you get in the demo?",
+      "noteText": "A platform walkthrough, elevator example, reminder example, and implementation proposal."
+    },
+    "form": {
+      "name": "Full name",
+      "namePlaceholder": "Your name",
+      "company": "Company",
+      "companyPlaceholder": "Company name",
+      "email": "Email",
+      "emailPlaceholder": "email@company.com",
+      "phone": "Phone",
+      "phonePlaceholder": "+389 xx xxx xxx",
+      "message": "Message",
+      "messagePlaceholder": "Tell us briefly about your company and number of elevators.",
+      "submit": "Send request",
+      "missing": "Please fill in the required fields.",
+      "success": "The request is ready. The form does not currently send data."
+    }
+  },
+  "demo": {
+    "eyebrow": "Demo page",
+    "title": "The demo will be available soon.",
+    "text": "We are preparing a system preview with a sample dashboard, elevator list, maintenance statuses, reminders, and basic demo navigation.",
+    "backHome": "Back to home"
+  },
+  "footer": {
+    "text": "B2B SaaS platform for elevator maintenance."
+  }
+}

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Signal Plus Engineering | Софтвер за одржување на лифтови</title>
-  <meta name="description" content="B2B SaaS платформа за компании за одржување на лифтови. Следете месечно одржување, сервисна историја, задачи, потсетници и 500+ лифтови од едно место." />
+  <title data-i18n-document="title">Signal Plus Engineering | Софтвер за одржување на лифтови</title>
+  <meta name="description" content="B2B SaaS платформа за компании за одржување на лифтови. Следете месечно одржување, сервисна историја, задачи, потсетници и 500+ лифтови од едно место." data-i18n-document="description" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -20,26 +20,27 @@
 <body>
   <header class="site-header" id="top">
     <nav class="navbar container">
-      <a class="brand" href="#top" aria-label="Signal Plus Engineering home">
+      <a class="brand" href="#top" aria-label="Signal Plus Engineering home" data-i18n-aria-label="common.brandAria">
         <img class="brand-logo logo-on-light" src="assets/img/dark logo full.png" alt="Signal Plus Solutions" />
         <img class="brand-logo logo-on-dark" src="assets/img/light logo full.png" alt="" aria-hidden="true" />
       </a>
 
-      <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+      <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false" data-i18n-aria-label="common.openNavigation">
         <span></span>
         <span></span>
         <span></span>
       </button>
 
       <div class="nav-menu">
-        <a href="#platform">Платформа</a>
-        <a href="#features">Функции</a>
-        <a href="#about">За нас</a>
-        <a href="#contact">Контакт</a>
+        <a href="#platform" data-i18n="nav.platform">Платформа</a>
+        <a href="#features" data-i18n="nav.features">Функции</a>
+        <a href="#about" data-i18n="nav.about">За нас</a>
+        <a href="#contact" data-i18n="nav.contact">Контакт</a>
         <button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
           <span class="theme-toggle-icon" aria-hidden="true"></span>
         </button>
-        <a class="nav-cta" href="#contact">Закажи демо</a>
+        <button class="language-toggle" type="button" aria-label="Switch to English" data-lang-toggle>EN</button>
+        <a class="nav-cta" href="#contact" data-i18n="common.scheduleDemo">Закажи демо</a>
       </div>
     </nav>
   </header>
@@ -49,59 +50,59 @@
       <div class="hero-bg"></div>
       <div class="container hero-grid">
         <div class="hero-content">
-          <p class="eyebrow">B2B SaaS за компании за одржување на лифтови</p>
-          <h1>Никогаш не пропуштајте месечно одржување.</h1>
-          <p class="hero-lead">
+          <p class="eyebrow" data-i18n="home.hero.eyebrow">B2B SaaS за компании за одржување на лифтови</p>
+          <h1 data-i18n="home.hero.title">Никогаш не пропуштајте месечно одржување.</h1>
+          <p class="hero-lead" data-i18n="home.hero.lead">
             Signal Plus Engineering помага на сервисни компании да управуваат со 500+ лифтови,
             задачи, потсетници, сервисна историја и теренски активности од едно место.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#contact">Закажи демо</a>
-            <a class="btn btn-secondary" href="demo.html">Пробај демо</a>
+            <a class="btn btn-primary" href="#contact" data-i18n="common.scheduleDemo">Закажи демо</a>
+            <a class="btn btn-secondary" href="demo.html" data-i18n="common.tryDemo">Пробај демо</a>
           </div>
-          <div class="hero-stats" aria-label="Platform highlights">
+          <div class="hero-stats" aria-label="Platform highlights" data-i18n-aria-label="home.hero.statsAria">
             <div>
               <strong>500+</strong>
-              <span>лифтови под контрола</span>
+              <span data-i18n="home.hero.stats.elevators">лифтови под контрола</span>
             </div>
             <div>
               <strong>24/7</strong>
-              <span>преглед на статуси</span>
+              <span data-i18n="home.hero.stats.statuses">преглед на статуси</span>
             </div>
             <div>
               <strong>SMS</strong>
-              <span>и email потсетници</span>
+              <span data-i18n="home.hero.stats.reminders">и email потсетници</span>
             </div>
           </div>
         </div>
 
-        <div class="hero-panel" aria-label="Dashboard preview">
+        <div class="hero-panel" aria-label="Dashboard preview" data-i18n-aria-label="home.dashboard.aria">
           <div class="panel-topbar">
             <span></span><span></span><span></span>
           </div>
           <div class="dashboard-card large">
             <div>
-              <p>Месечно одржување</p>
+              <p data-i18n="home.dashboard.monthly">Месечно одржување</p>
               <h3>84%</h3>
             </div>
-            <span class="status-pill good">Во тек</span>
+            <span class="status-pill good" data-i18n="home.dashboard.inProgress">Во тек</span>
           </div>
           <div class="dashboard-row">
             <div class="dashboard-card">
-              <p>За денес</p>
+              <p data-i18n="home.dashboard.today">За денес</p>
               <h3>18</h3>
-              <span>сервисни задачи</span>
+              <span data-i18n="home.dashboard.serviceTasks">сервисни задачи</span>
             </div>
             <div class="dashboard-card warning-card">
-              <p>Истекува</p>
+              <p data-i18n="home.dashboard.expiring">Истекува</p>
               <h3>7</h3>
-              <span>лифта оваа недела</span>
+              <span data-i18n="home.dashboard.thisWeek">лифта оваа недела</span>
             </div>
           </div>
           <div class="maintenance-list">
-            <div><span class="dot good"></span> Центар, Скопје <b>Завршено</b></div>
-            <div><span class="dot warn"></span> Карпош, Скопје <b>Утре</b></div>
-            <div><span class="dot danger"></span> Аеродром, Скопје <b>Доцни</b></div>
+            <div><span class="dot good"></span> <span data-i18n="home.dashboard.locations.center">Центар, Скопје</span> <b data-i18n="home.dashboard.done">Завршено</b></div>
+            <div><span class="dot warn"></span> <span data-i18n="home.dashboard.locations.karposh">Карпош, Скопје</span> <b data-i18n="home.dashboard.tomorrow">Утре</b></div>
+            <div><span class="dot danger"></span> <span data-i18n="home.dashboard.locations.aerodrom">Аеродром, Скопје</span> <b data-i18n="home.dashboard.late">Доцни</b></div>
           </div>
         </div>
       </div>
@@ -110,10 +111,10 @@
     <section class="section-padding" id="platform">
       <div class="container split-section">
         <div>
-          <p class="eyebrow dark">Платформа</p>
-          <h2>Едно место за сите лифтови, задачи и сервиси.</h2>
+          <p class="eyebrow dark" data-i18n="home.platform.eyebrow">Платформа</p>
+          <h2 data-i18n="home.platform.title">Едно место за сите лифтови, задачи и сервиси.</h2>
         </div>
-        <p class="section-text">
+        <p class="section-text" data-i18n="home.platform.text">
           Наместо Excel табели, хартиени белешки и рачно јавување, системот овозможува јасен преглед
           на секој лифт, последно одржување, следен термин, задолжен инженер и статус на активност.
         </p>
@@ -122,56 +123,56 @@
       <div class="container cards-grid three">
         <article class="feature-card">
           <span class="icon-box">01</span>
-          <h3>Планирање на одржување</h3>
-          <p>Автоматски следете месечни проверки, истекувања и сервиси што треба да се завршат навреме.</p>
+          <h3 data-i18n="home.platform.cards.planning.title">Планирање на одржување</h3>
+          <p data-i18n="home.platform.cards.planning.text">Автоматски следете месечни проверки, истекувања и сервиси што треба да се завршат навреме.</p>
         </article>
         <article class="feature-card">
           <span class="icon-box">02</span>
-          <h3>Историја по лифт</h3>
-          <p>Секој лифт има сопствена сервисна историја, белешки, документи и активности од инженерите.</p>
+          <h3 data-i18n="home.platform.cards.history.title">Историја по лифт</h3>
+          <p data-i18n="home.platform.cards.history.text">Секој лифт има сопствена сервисна историја, белешки, документи и активности од инженерите.</p>
         </article>
         <article class="feature-card">
           <span class="icon-box">03</span>
-          <h3>Потсетници и известувања</h3>
-          <p>Email и SMS известувања според пакетот на клиентот, со можност за различен број известувања.</p>
+          <h3 data-i18n="home.platform.cards.notifications.title">Потсетници и известувања</h3>
+          <p data-i18n="home.platform.cards.notifications.text">Email и SMS известувања според пакетот на клиентот, со можност за различен број известувања.</p>
         </article>
       </div>
     </section>
 
     <section class="section-padding muted" id="features">
       <div class="container section-heading center">
-        <p class="eyebrow dark">Функции</p>
-        <h2>Создадено за реална теренска работа.</h2>
-        <p>Системот е наменет за компании кои управуваат со многу локации, инженери и периодични обврски.</p>
+        <p class="eyebrow dark" data-i18n="home.features.eyebrow">Функции</p>
+        <h2 data-i18n="home.features.title">Создадено за реална теренска работа.</h2>
+        <p data-i18n="home.features.text">Системот е наменет за компании кои управуваат со многу локации, инженери и периодични обврски.</p>
       </div>
 
       <div class="container feature-list">
         <div class="feature-line">
           <span></span>
           <div>
-            <h3>Управување со 500+ лифтови</h3>
-            <p>Филтрирање по град, зграда, статус, инженер и следен сервис.</p>
+            <h3 data-i18n="home.features.lines.elevators.title">Управување со 500+ лифтови</h3>
+            <p data-i18n="home.features.lines.elevators.text">Филтрирање по град, зграда, статус, инженер и следен сервис.</p>
           </div>
         </div>
         <div class="feature-line">
           <span></span>
           <div>
-            <h3>Мапа и локации</h3>
-            <p>Преглед на лифтови по локација за подобро планирање на рути и дневни задачи.</p>
+            <h3 data-i18n="home.features.lines.map.title">Мапа и локации</h3>
+            <p data-i18n="home.features.lines.map.text">Преглед на лифтови по локација за подобро планирање на рути и дневни задачи.</p>
           </div>
         </div>
         <div class="feature-line">
           <span></span>
           <div>
-            <h3>Задачи за инженери</h3>
-            <p>Јасно кој што треба да заврши, кога е завршено и што е забележано на терен.</p>
+            <h3 data-i18n="home.features.lines.tasks.title">Задачи за инженери</h3>
+            <p data-i18n="home.features.lines.tasks.text">Јасно кој што треба да заврши, кога е завршено и што е забележано на терен.</p>
           </div>
         </div>
         <div class="feature-line">
           <span></span>
           <div>
-            <h3>Извештаи и прегледи</h3>
-            <p>Месечни извештаи, активност по инженер и статус на одржување за менаџментот.</p>
+            <h3 data-i18n="home.features.lines.reports.title">Извештаи и прегледи</h3>
+            <p data-i18n="home.features.lines.reports.text">Месечни извештаи, активност по инженер и статус на одржување за менаџментот.</p>
           </div>
         </div>
       </div>
@@ -180,27 +181,27 @@
     <section class="section-padding cta-band">
       <div class="container cta-card">
         <div>
-          <p class="eyebrow">За сервисни компании</p>
-          <h2>Подобра контрола, помалку пропуштени термини.</h2>
-          <p>Преминете од рачно следење кон професионален систем за одржување на лифтови.</p>
+          <p class="eyebrow" data-i18n="home.cta.eyebrow">За сервисни компании</p>
+          <h2 data-i18n="home.cta.title">Подобра контрола, помалку пропуштени термини.</h2>
+          <p data-i18n="home.cta.text">Преминете од рачно следење кон професионален систем за одржување на лифтови.</p>
         </div>
-        <a class="btn btn-primary" href="#contact">Закажи демо</a>
+        <a class="btn btn-primary" href="#contact" data-i18n="common.scheduleDemo">Закажи демо</a>
       </div>
     </section>
 
     <section class="section-padding" id="about">
       <div class="container about-grid">
         <div class="about-image-card">
-          <img class="about-logo" src="assets/img/light logo full.png" alt="Signal Plus Solutions" />
+          <img class="about-design" src="assets/img/signalplus-designs.jpg" alt="Signal Plus lift maintenance platform preview" data-i18n-alt="home.about.imageAlt" />
         </div>
         <div>
-          <p class="eyebrow dark">За нас</p>
-          <h2>Професионален пристап кон одржување и организација.</h2>
-          <p>
+          <p class="eyebrow dark" data-i18n="home.about.eyebrow">За нас</p>
+          <h2 data-i18n="home.about.title">Професионален пристап кон одржување и организација.</h2>
+          <p data-i18n="home.about.text1">
             Signal Plus Engineering развива дигитални решенија за компании кои сакаат подобра организација,
             јасна евиденција и навремено извршување на сервисните активности.
           </p>
-          <p>
+          <p data-i18n="home.about.text2">
             Нашата цел е да им помогнеме на компаниите за одржување на лифтови да работат поефикасно,
             со помалку административен товар и поголема контрола врз секој објект.
           </p>
@@ -211,41 +212,41 @@
     <section class="section-padding contact-section" id="contact">
       <div class="container contact-grid">
         <div>
-          <p class="eyebrow dark">Контакт</p>
-          <h2>Закажете демо презентација.</h2>
-          <p class="section-text">
+          <p class="eyebrow dark" data-i18n="home.contact.eyebrow">Контакт</p>
+          <h2 data-i18n="home.contact.title">Закажете демо презентација.</h2>
+          <p class="section-text" data-i18n="home.contact.text">
             Пополнете ја формата и нашиот тим ќе ве контактира за кратка презентација на системот.
           </p>
           <div class="contact-note">
-            <strong>Што добивате на демо?</strong>
-            <span>Преглед на платформа, пример за лифт, пример за потсетници и предлог за имплементација.</span>
+            <strong data-i18n="home.contact.noteTitle">Што добивате на демо?</strong>
+            <span data-i18n="home.contact.noteText">Преглед на платформа, пример за лифт, пример за потсетници и предлог за имплементација.</span>
           </div>
         </div>
 
         <form class="contact-form" id="contactForm" novalidate>
           <div class="form-row">
-            <label for="name">Име и презиме</label>
-            <input type="text" id="name" name="name" placeholder="Вашето име" required />
+            <label for="name" data-i18n="home.form.name">Име и презиме</label>
+            <input type="text" id="name" name="name" placeholder="Вашето име" required data-i18n-placeholder="home.form.namePlaceholder" />
           </div>
           <div class="form-row">
-            <label for="company">Компанија</label>
-            <input type="text" id="company" name="company" placeholder="Име на компанија" required />
+            <label for="company" data-i18n="home.form.company">Компанија</label>
+            <input type="text" id="company" name="company" placeholder="Име на компанија" required data-i18n-placeholder="home.form.companyPlaceholder" />
           </div>
           <div class="form-row two-cols">
             <div>
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="email@company.com" required />
+              <label for="email" data-i18n="home.form.email">Email</label>
+              <input type="email" id="email" name="email" placeholder="email@company.com" required data-i18n-placeholder="home.form.emailPlaceholder" />
             </div>
             <div>
-              <label for="phone">Телефон</label>
-              <input type="tel" id="phone" name="phone" placeholder="+389 xx xxx xxx" />
+              <label for="phone" data-i18n="home.form.phone">Телефон</label>
+              <input type="tel" id="phone" name="phone" placeholder="+389 xx xxx xxx" data-i18n-placeholder="home.form.phonePlaceholder" />
             </div>
           </div>
           <div class="form-row">
-            <label for="message">Порака</label>
-            <textarea id="message" name="message" rows="5" placeholder="Кажете ни кратко за вашата компанија и број на лифтови."></textarea>
+            <label for="message" data-i18n="home.form.message">Порака</label>
+            <textarea id="message" name="message" rows="5" placeholder="Кажете ни кратко за вашата компанија и број на лифтови." data-i18n-placeholder="home.form.messagePlaceholder"></textarea>
           </div>
-          <button class="btn btn-primary form-submit" type="submit">Испрати барање</button>
+          <button class="btn btn-primary form-submit" type="submit" data-i18n="home.form.submit">Испрати барање</button>
           <p class="form-status" id="formStatus" role="status"></p>
         </form>
       </div>
@@ -256,12 +257,12 @@
     <div class="container footer-grid">
       <div>
         <img class="footer-logo" src="assets/img/light logo full.png" alt="Signal Plus Solutions" />
-        <p>B2B SaaS платформа за одржување на лифтови.</p>
+        <p data-i18n="footer.text">B2B SaaS платформа за одржување на лифтови.</p>
       </div>
       <div class="footer-links">
-        <a href="#platform">Платформа</a>
-        <a href="demo.html">Демо</a>
-        <a href="#contact">Контакт</a>
+        <a href="#platform" data-i18n="nav.platform">Платформа</a>
+        <a href="demo.html" data-i18n="nav.demo">Демо</a>
+        <a href="#contact" data-i18n="nav.contact">Контакт</a>
       </div>
     </div>
   </footer>
