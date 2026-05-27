@@ -5,6 +5,8 @@ const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matc
 const pageKey = document.body.classList.contains('demo-page') ? 'demo' : 'index';
 const supportedLanguages = ['mk', 'en'];
 const defaultLanguage = 'mk';
+const contactCooldownKey = 'signalplus-contact-sent-at';
+const contactCooldownMs = 7 * 24 * 60 * 60 * 1000;
 let currentTranslations = {};
 
 const getStoredTheme = () => {
@@ -42,6 +44,44 @@ const storeLanguage = (language) => {
 const getTranslation = (key, fallback = '') => {
   const value = key.split('.').reduce((result, part) => result?.[part], currentTranslations);
   return typeof value === 'string' ? value : fallback;
+};
+
+const getContactSentAt = () => {
+  try {
+    return Number(localStorage.getItem(contactCooldownKey)) || 0;
+  } catch (error) {
+    return 0;
+  }
+};
+
+const storeContactSentAt = () => {
+  try {
+    localStorage.setItem(contactCooldownKey, String(Date.now()));
+  } catch (error) {
+    // The server still receives the request when storage is unavailable.
+  }
+};
+
+const getContactCooldownRemainingDays = () => {
+  const sentAt = getContactSentAt();
+  const expiresAt = sentAt + contactCooldownMs;
+  const remainingMs = expiresAt - Date.now();
+
+  if (!sentAt || remainingMs <= 0) {
+    return 0;
+  }
+
+  return Math.ceil(remainingMs / (24 * 60 * 60 * 1000));
+};
+
+const getCooldownMessage = () => {
+  const days = getContactCooldownRemainingDays();
+
+  if (!days) {
+    return '';
+  }
+
+  return getTranslation('home.form.cooldown', 'A request has already been sent from this browser. You can send another one in {days} days.').replace('{days}', String(days));
 };
 
 const applyTheme = (theme) => {
@@ -121,6 +161,7 @@ const applyTranslations = (translations) => {
     toggle.setAttribute('aria-label', translations.language?.toggleLabel || 'Switch language');
   });
 
+  updateContactCooldownState();
   applyTheme(root.dataset.theme);
 };
 
@@ -173,10 +214,37 @@ if (navToggle && navMenu) {
 
 const contactForm = document.querySelector('#contactForm');
 const formStatus = document.querySelector('#formStatus');
+const formSubmit = contactForm?.querySelector('.form-submit');
+
+const updateContactCooldownState = () => {
+  if (!contactForm || !formStatus || !formSubmit) {
+    return;
+  }
+
+  const cooldownMessage = getCooldownMessage();
+
+  if (cooldownMessage) {
+    formSubmit.disabled = true;
+    formStatus.className = 'form-status success';
+    formStatus.textContent = cooldownMessage;
+  } else if (!formSubmit.dataset.submitting) {
+    formSubmit.disabled = false;
+  }
+};
 
 if (contactForm && formStatus) {
-  contactForm.addEventListener('submit', (event) => {
+  updateContactCooldownState();
+
+  contactForm.addEventListener('submit', async (event) => {
     event.preventDefault();
+
+    const cooldownMessage = getCooldownMessage();
+
+    if (cooldownMessage) {
+      formStatus.className = 'form-status success';
+      formStatus.textContent = cooldownMessage;
+      return;
+    }
 
     const formData = new FormData(contactForm);
     const payload = Object.fromEntries(formData.entries());
@@ -192,18 +260,44 @@ if (contactForm && formStatus) {
       return;
     }
 
-    // Prepared for future API integration.
-    // Example:
-    // fetch('/api/contact-requests', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(payload)
-    // });
-
-    console.log('Contact form payload:', payload);
-
-    formStatus.textContent = getTranslation('home.form.success', 'Барањето е подготвено. Формата моментално не испраќа податоци.');
+    formStatus.textContent = getTranslation('home.form.sending', 'Барањето се испраќа...');
     formStatus.classList.add('success');
-    contactForm.reset();
+
+    if (formSubmit) {
+      formSubmit.dataset.submitting = 'true';
+      formSubmit.disabled = true;
+    }
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json'
+        },
+        body: formData
+      });
+
+      if (!response.ok) {
+        throw new Error(`Contact request failed with status ${response.status}`);
+      }
+
+      formStatus.className = 'form-status success';
+      formStatus.textContent = getTranslation('home.form.success', 'Барањето е успешно испратено.');
+      storeContactSentAt();
+      contactForm.reset();
+      updateContactCooldownState();
+    } catch (error) {
+      console.error(error);
+      formStatus.className = 'form-status error';
+      formStatus.textContent = getTranslation('home.form.error', 'Барањето не се испрати. Обидете се повторно.');
+    } finally {
+      if (formSubmit) {
+        delete formSubmit.dataset.submitting;
+
+        if (!getContactCooldownRemainingDays()) {
+          formSubmit.disabled = false;
+        }
+      }
+    }
   });
 }

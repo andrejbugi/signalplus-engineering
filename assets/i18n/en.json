@@ -6,19 +6,19 @@
   },
   "documents": {
     "index": {
-      "title": "Signal Plus Engineering | Elevator Maintenance Software",
+      "title": "Signal Plus Solutions | Elevator Maintenance Software",
       "description": "B2B SaaS platform for elevator maintenance companies. Track monthly maintenance, service history, tasks, reminders, and 500+ elevators from one place."
     },
     "demo": {
-      "title": "Demo | Signal Plus Engineering",
-      "description": "Demo page for the Signal Plus Engineering SaaS platform for elevator maintenance."
+      "title": "Demo | Signal Plus Solutions",
+      "description": "Demo page for the Signal Plus Solutions SaaS platform for elevator maintenance."
     }
   },
   "common": {
-    "brandAria": "Signal Plus Engineering home",
+    "brandAria": "Signal Plus Solutions home",
     "openNavigation": "Open navigation",
-    "scheduleDemo": "Schedule demo",
-    "tryDemo": "Try demo",
+    "tryDemo": "Try out the demo",
+    "buySoftware": "Buy software",
     "switchToDark": "Switch to dark theme",
     "switchToLight": "Switch to light theme"
   },
@@ -33,7 +33,7 @@
     "hero": {
       "eyebrow": "B2B SaaS for elevator maintenance companies",
       "title": "Never miss monthly maintenance again.",
-      "lead": "Signal Plus Engineering helps service companies manage 500+ elevators, tasks, reminders, service history, and field activity from one place.",
+      "lead": "Signal Plus Solutions helps service companies manage 500+ elevators, tasks, reminders, service history, and field activity from one place.",
       "statsAria": "Platform highlights",
       "stats": {
         "elevators": "elevators under control",
@@ -109,15 +109,15 @@
       "imageAlt": "Preview of the Signal Plus elevator maintenance platform",
       "eyebrow": "About us",
       "title": "A professional approach to maintenance and organization.",
-      "text1": "Signal Plus Engineering develops digital solutions for companies that want better organization, clear records, and timely service execution.",
+      "text1": "Signal Plus Solutions develops digital solutions for companies that want better organization, clear records, and timely service execution.",
       "text2": "Our goal is to help elevator maintenance companies work more efficiently, with less administrative load and more control over every building."
     },
     "contact": {
       "eyebrow": "Contact",
-      "title": "Schedule a demo presentation.",
-      "text": "Fill out the form and our team will contact you for a short presentation of the system.",
-      "noteTitle": "What do you get in the demo?",
-      "noteText": "A platform walkthrough, elevator example, reminder example, and implementation proposal."
+      "title": "Send a purchase inquiry.",
+      "text": "Fill out the form and our team will contact you with buying and implementation information.",
+      "noteTitle": "What happens after your inquiry?",
+      "noteText": "A consultation about your company needs, a package recommendation, and next implementation steps."
     },
     "form": {
       "name": "Full name",
@@ -131,14 +131,17 @@
       "message": "Message",
       "messagePlaceholder": "Tell us briefly about your company and number of elevators.",
       "submit": "Send request",
+      "sending": "Sending request...",
       "missing": "Please fill in the required fields.",
-      "success": "The request is ready. The form does not currently send data."
+      "success": "Your request was sent successfully. We will contact you soon.",
+      "error": "The request could not be sent. Please try again.",
+      "cooldown": "A request has already been sent from this browser. You can send another one in {days} days."
     }
   },
   "demo": {
     "eyebrow": "Demo page",
-    "title": "The demo will be available soon.",
-    "text": "We are preparing a system preview with a sample dashboard, elevator list, maintenance statuses, reminders, and basic demo navigation.",
+    "title": "The demo is available.",
+    "text": "Open the app to try the platform with the available demo access.",
     "backHome": "Back to home"
   },
   "footer": {
